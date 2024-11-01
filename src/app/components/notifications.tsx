@@ -34,7 +34,9 @@ type PrivateMessageNotificationObj = {
 export function ReactionNotification(props: ReactionType) {
   const { userName, seen, event, imgUrl, post, timeStamp } = props.notification;
   return (
-    <div className={`flex items-center gap-2 p-2 ${seen ? "" : "bg-blue-400"}`}>
+    <div
+      className={`flex items-center gap-2 p-2 ${seen ? "" : "bg-very-ligth-grayish-blue"}`}
+    >
       <img
         className="h-9 w-9"
         src={imgUrl}
