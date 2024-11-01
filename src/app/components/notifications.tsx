@@ -18,6 +18,7 @@ export type ReactionNotificationObj = {
   post: string;
   post_url: string;
   imgUrl: string;
+  timeStamp: string;
 };
 
 export type ReactionType = {
@@ -31,14 +32,23 @@ type PrivateMessageNotificationObj = {
   dm: string;
 };
 export function ReactionNotification(props: ReactionType) {
-  const { userName, seen, event, imgUrl } = props.notification;
+  const { userName, seen, event, imgUrl, post, timeStamp } = props.notification;
   return (
-    <div className="bg-sky-400">
-      <img src={imgUrl} alt={`profile picture of ${userName}`} />
+    <div className={`flex items-center gap-2 p-2 ${seen ? "" : "bg-blue-400"}`}>
+      <img
+        className="h-9 w-9"
+        src={imgUrl}
+        alt={`profile picture of ${userName}`}
+      />
       <div>
-        {" "}
-        <span className="font-bold">{userName}</span>
-        {event}
+        <div>
+          <span className="font-bold">{userName}</span>
+          {` ${event} `}
+          <a href="/" className="font-bold">
+            {post}
+          </a>
+        </div>
+        <div>{`${timeStamp} ago`}</div>
       </div>
     </div>
   );

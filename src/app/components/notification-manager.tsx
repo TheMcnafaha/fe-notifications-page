@@ -24,9 +24,10 @@ export function AllNotifications() {
     userName: "Mark Webber",
     seen: false,
     event: "reacted to your recent post",
-    imgUrl: "/",
+    imgUrl: "/images/avatar-mark-webber.webp",
     post: "My first tournament today!",
     post_url: "/",
+    timeStamp: "1m",
   };
   return (
     <>
