@@ -5,12 +5,15 @@ import {
   ReactionNotification,
   SimpleNotification,
   SimpleNotificationObj,
+  GroupNotificationObj,
   type ReactionNotificationObj,
+  GroupNotification,
 } from "./notifications";
 
 type NotificationProps =
   | { notification: ReactionNotificationObj }
-  | { notification: SimpleNotificationObj };
+  | { notification: SimpleNotificationObj }
+  | { notification: GroupNotificationObj };
 function NotificationManager(props: NotificationProps) {
   return (
     <NotificationSeenContainer seen={props.notification.seen}>
@@ -27,6 +30,8 @@ function getCorrectNotification({ notification }: NotificationProps) {
 
     case "simple":
       return <SimpleNotification notification={notification} />;
+    case "group":
+      return <GroupNotification notification={notification} />;
     default:
       return null;
   }
@@ -50,11 +55,22 @@ export function AllNotifications() {
     timeStamp: "5m",
     type: "simple",
   };
+
+  const groupJacob: GroupNotificationObj = {
+    userName: "Jacob Thompson",
+    seen: false,
+    event: "has joined your group",
+    group: "Chess Club",
+    imgUrl: "/images/avatar-mark-webber.webp",
+    timeStamp: "1 days",
+    type: "group",
+  };
   return (
     <>
       <div className="flex flex-col gap-3">
         <NotificationManager notification={reactionMark} />
         <NotificationManager notification={simpleAngela} />
+        <NotificationManager notification={groupJacob} />
       </div>
     </>
   );
