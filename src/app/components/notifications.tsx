@@ -1,10 +1,13 @@
 "use client";
 
+import { NotificationSeenContainer } from "./notifiaction-seen-container";
+
 export type SimpleNotificationObj = {
   userName: string;
   seen: boolean;
   event: string;
   imgUrl: string;
+  timeStamp: string;
   type: "simple";
 };
 
@@ -32,9 +35,7 @@ export function ReactionNotification({
 }) {
   const { userName, seen, event, imgUrl, post, timeStamp } = notification;
   return (
-    <div
-      className={`flex items-center gap-2 p-2 ${seen ? "" : "bg-very-ligth-grayish-blue"}`}
-    >
+    <>
       <img
         className="h-9 w-9"
         src={imgUrl}
@@ -50,6 +51,31 @@ export function ReactionNotification({
         </div>
         <div>{`${timeStamp} ago`}</div>
       </div>
-    </div>
+    </>
+  );
+}
+
+export function SimpleNotification({
+  notification,
+}: {
+  notification: SimpleNotificationObj;
+}) {
+  const { userName, seen, event, imgUrl, timeStamp } = notification;
+  return (
+    <>
+      <img
+        className="h-9 w-9"
+        src={imgUrl}
+        alt={`profile picture of ${userName}`}
+      />
+      <div>
+        <div>
+          <span className="font-bold">{userName}</span>
+          {` ${event} `}
+          <a href="/" className="font-bold"></a>
+        </div>
+        <div>{`${timeStamp} ago`}</div>
+      </div>
+    </>
   );
 }

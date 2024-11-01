@@ -1,7 +1,9 @@
 "use client";
 
+import { NotificationSeenContainer } from "./notifiaction-seen-container";
 import {
   ReactionNotification,
+  SimpleNotification,
   SimpleNotificationObj,
   type ReactionNotificationObj,
 } from "./notifications";
@@ -9,19 +11,26 @@ import {
 type NotificationProps =
   | { notification: ReactionNotificationObj }
   | { notification: SimpleNotificationObj };
-function NotificationManager({ notification }: NotificationProps) {
+function NotificationManager(props: NotificationProps) {
+  return (
+    <NotificationSeenContainer seen={props.notification.seen}>
+      {getCorrectNotification(props)}
+    </NotificationSeenContainer>
+  );
+}
+
+function getCorrectNotification({ notification }: NotificationProps) {
   const { type } = notification;
   switch (type) {
     case "reaction":
-      console.log(notification);
-
       return <ReactionNotification notification={notification} />;
 
+    case "simple":
+      return <SimpleNotification notification={notification} />;
     default:
       return null;
   }
 }
-
 export function AllNotifications() {
   const reactionMark: ReactionNotificationObj = {
     userName: "Mark Webber",
@@ -38,6 +47,7 @@ export function AllNotifications() {
     seen: false,
     event: "followed you",
     imgUrl: "/images/avatar-mark-webber.webp",
+    timeStamp: "5m",
     type: "simple",
   };
   return (
