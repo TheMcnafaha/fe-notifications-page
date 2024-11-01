@@ -52,8 +52,10 @@ export function AllNotifications() {
   };
   return (
     <>
-      <NotificationManager notification={reactionMark} />
-      <NotificationManager notification={simpleAngela} />
+      <div className="flex flex-col gap-3">
+        <NotificationManager notification={reactionMark} />
+        <NotificationManager notification={simpleAngela} />
+      </div>
     </>
   );
 }

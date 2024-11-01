@@ -1,7 +1,5 @@
 "use client";
 
-import { NotificationSeenContainer } from "./notifiaction-seen-container";
-
 export type SimpleNotificationObj = {
   userName: string;
   seen: boolean;

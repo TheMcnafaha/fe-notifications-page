@@ -9,7 +9,7 @@ export function NotificationSeenContainer(
 ) {
   return (
     <div
-      className={`flex items-center gap-2 p-2 ${props.seen ? "" : "bg-very-ligth-grayish-blue"}`}
+      className={`flex w-full items-center gap-5 p-2 ${props.seen ? "" : "bg-very-ligth-grayish-blue"}`}
     >
       {props.children}
     </div>
