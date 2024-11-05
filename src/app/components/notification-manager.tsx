@@ -95,12 +95,22 @@ export function AllNotifications() {
     pictureUrl: "/images/image-chess.webp",
     type: "picture",
   };
+  const groupAnna: GroupNotificationObj = {
+    userName: "Anna Kim",
+    event: "left the group",
+    group: "Chess Club",
+    seen: false,
+    imgUrl: "/images/avatar-mark-webber.webp",
+    timeStamp: "1 week",
+    type: "group",
+  };
   const reactions: Array<AllNotificationTypes> = [
     reactionMark,
     simpleAngela,
     groupJacob,
     privateRizky,
     pictureKimberly,
+    groupAnna,
   ];
   return (
     <>
