@@ -10,14 +10,17 @@ import {
   GroupNotification,
   PrivateMessageNotificationObj,
   PrivateMessageNotification,
+  PictureNotificationObj,
+  PicutureNotification,
 } from "./notifications";
 
-type AllNotifications =
+type AllNotificationTypes =
   | ReactionNotificationObj
   | SimpleNotificationObj
   | GroupNotificationObj
-  | PrivateMessageNotificationObj;
-type NotificationProps = { notification: AllNotifications };
+  | PrivateMessageNotificationObj
+  | PictureNotificationObj;
+type NotificationProps = { notification: AllNotificationTypes };
 function NotificationManager(props: NotificationProps) {
   return (
     <NotificationSeenContainer
@@ -40,6 +43,8 @@ function getCorrectNotification({ notification }: NotificationProps) {
       return <GroupNotification notification={notification} />;
     case "private":
       return <PrivateMessageNotification notification={notification} />;
+    case "picture":
+      return <PicutureNotification notification={notification} />;
     default:
       return null;
   }
@@ -81,11 +86,21 @@ export function AllNotifications() {
     dm: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
     type: "private",
   };
-  const reactions: Array<AllNotifications> = [
+
+  const pictureKimberly: PictureNotificationObj = {
+    userName: "Rizky Hasanuddin",
+    seen: false,
+    imgUrl: "/images/avatar-mark-webber.webp",
+    timeStamp: "1 week",
+    pictureUrl: "/images/image-chess.webp",
+    type: "picture",
+  };
+  const reactions: Array<AllNotificationTypes> = [
     reactionMark,
     simpleAngela,
     groupJacob,
     privateRizky,
+    pictureKimberly,
   ];
   return (
     <>

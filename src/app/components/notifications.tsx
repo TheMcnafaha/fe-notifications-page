@@ -37,6 +37,15 @@ export type PrivateMessageNotificationObj = {
   dm: string;
   type: "private";
 };
+
+export type PictureNotificationObj = {
+  userName: string;
+  seen: boolean;
+  imgUrl: string;
+  pictureUrl: string;
+  timeStamp: string;
+  type: "picture";
+};
 export function SimpleNotification({
   notification,
 }: {
@@ -138,6 +147,34 @@ export function PrivateMessageNotification({
           <div>{`${timeStamp} ago`}</div>
         </div>
         <div className="col-start-2">{dm}</div>
+      </div>
+    </>
+  );
+}
+
+export function PicutureNotification({
+  notification,
+}: {
+  notification: PictureNotificationObj;
+}) {
+  const { userName, seen, imgUrl, timeStamp, pictureUrl } = notification;
+  return (
+    <>
+      <img
+        className="h-9 w-9"
+        src={imgUrl}
+        alt={`profile picture of ${userName}`}
+      />
+      <div>
+        <div className="flex gap-4">
+          <div>
+            <span className="font-bold">{userName}</span>
+            {` commented on your picture `}
+            <a href="/" className="font-bold"></a>
+          </div>
+          <img className="h-9 w-9" src={pictureUrl} alt="image of post" />
+        </div>
+        <div>{`${timeStamp} ago`}</div>
       </div>
     </>
   );
