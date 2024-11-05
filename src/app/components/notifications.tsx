@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export type SimpleNotificationObj = {
   userName: string;
   seen: boolean;
@@ -63,7 +65,6 @@ export function SimpleNotification({
         <div>
           <span className="font-bold">{userName}</span>
           {` ${event} `}
-          <a href="/" className="font-bold"></a>
         </div>
         <div>{`${timeStamp} ago`}</div>
       </div>
@@ -87,9 +88,9 @@ export function ReactionNotification({
         <div>
           <span className="font-bold">{userName}</span>
           {` ${event} `}
-          <a href="/" className="font-bold">
+          <Link href="/" className="font-bold">
             {post}
-          </a>
+          </Link>
         </div>
         <div>{`${timeStamp} ago`}</div>
       </div>
@@ -114,9 +115,9 @@ export function GroupNotification({
         <div>
           <span className="font-bold">{userName}</span>
           {` ${event} `}
-          <a href="/" className="font-bold">
+          <Link href="/" className="font-bold">
             {group}
-          </a>
+          </Link>
         </div>
         <div>{`${timeStamp} ago`}</div>
       </div>
@@ -142,7 +143,7 @@ export function PrivateMessageNotification({
           <div>
             <span className="font-bold">{userName}</span>
             {` sent you a private message `}
-            <a href="/" className="font-bold"></a>
+            <Link href="/" className="font-bold"></Link>
           </div>
           <div>{`${timeStamp} ago`}</div>
         </div>
@@ -170,7 +171,7 @@ export function PicutureNotification({
           <div>
             <span className="font-bold">{userName}</span>
             {` commented on your picture `}
-            <a href="/" className="font-bold"></a>
+            <Link href="/" className="font-bold"></Link>
           </div>
           <img className="h-9 w-9" src={pictureUrl} alt="image of post" />
         </div>

@@ -4,14 +4,14 @@ import { NotificationSeenContainer } from "./notifiaction-seen-container";
 import {
   ReactionNotification,
   SimpleNotification,
-  SimpleNotificationObj,
-  GroupNotificationObj,
-  type ReactionNotificationObj,
   GroupNotification,
-  PrivateMessageNotificationObj,
   PrivateMessageNotification,
-  PictureNotificationObj,
   PicutureNotification,
+  type PrivateMessageNotificationObj,
+  type PictureNotificationObj,
+  type SimpleNotificationObj,
+  type GroupNotificationObj,
+  type ReactionNotificationObj,
 } from "./notifications";
 
 type AllNotificationTypes =
