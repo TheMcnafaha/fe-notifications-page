@@ -8,15 +8,21 @@ import {
   GroupNotificationObj,
   type ReactionNotificationObj,
   GroupNotification,
+  PrivateMessageNotificationObj,
+  PrivateMessageNotification,
 } from "./notifications";
 
 type NotificationProps =
   | { notification: ReactionNotificationObj }
   | { notification: SimpleNotificationObj }
-  | { notification: GroupNotificationObj };
+  | { notification: GroupNotificationObj }
+  | { notification: PrivateMessageNotificationObj };
 function NotificationManager(props: NotificationProps) {
   return (
-    <NotificationSeenContainer seen={props.notification.seen}>
+    <NotificationSeenContainer
+      seen={props.notification.seen}
+      type={props.notification.type}
+    >
       {getCorrectNotification(props)}
     </NotificationSeenContainer>
   );
@@ -27,11 +33,12 @@ function getCorrectNotification({ notification }: NotificationProps) {
   switch (type) {
     case "reaction":
       return <ReactionNotification notification={notification} />;
-
     case "simple":
       return <SimpleNotification notification={notification} />;
     case "group":
       return <GroupNotification notification={notification} />;
+    case "private":
+      return <PrivateMessageNotification notification={notification} />;
     default:
       return null;
   }
@@ -65,12 +72,21 @@ export function AllNotifications() {
     timeStamp: "1 days",
     type: "group",
   };
+  const privateRizky: PrivateMessageNotificationObj = {
+    userName: "Rizky Hasanuddin",
+    seen: false,
+    imgUrl: "/images/avatar-mark-webber.webp",
+    timeStamp: "1 days",
+    dm: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
+    type: "private",
+  };
   return (
     <>
       <div className="flex flex-col gap-3">
         <NotificationManager notification={reactionMark} />
         <NotificationManager notification={simpleAngela} />
         <NotificationManager notification={groupJacob} />
+        <NotificationManager notification={privateRizky} />
       </div>
     </>
   );
