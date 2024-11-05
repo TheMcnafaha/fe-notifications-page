@@ -12,11 +12,12 @@ import {
   PrivateMessageNotification,
 } from "./notifications";
 
-type NotificationProps =
-  | { notification: ReactionNotificationObj }
-  | { notification: SimpleNotificationObj }
-  | { notification: GroupNotificationObj }
-  | { notification: PrivateMessageNotificationObj };
+type AllNotifications =
+  | ReactionNotificationObj
+  | SimpleNotificationObj
+  | GroupNotificationObj
+  | PrivateMessageNotificationObj;
+type NotificationProps = { notification: AllNotifications };
 function NotificationManager(props: NotificationProps) {
   return (
     <NotificationSeenContainer
@@ -80,14 +81,23 @@ export function AllNotifications() {
     dm: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
     type: "private",
   };
+  const reactions: Array<AllNotifications> = [
+    reactionMark,
+    simpleAngela,
+    groupJacob,
+    privateRizky,
+  ];
   return (
     <>
-      <div className="flex flex-col gap-3">
-        <NotificationManager notification={reactionMark} />
-        <NotificationManager notification={simpleAngela} />
-        <NotificationManager notification={groupJacob} />
-        <NotificationManager notification={privateRizky} />
-      </div>
+      <ul className="flex flex-col gap-3">
+        {reactions.map((notification, i) => {
+          return (
+            <li key={i}>
+              <NotificationManager notification={notification} />
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
