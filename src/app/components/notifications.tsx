@@ -76,7 +76,7 @@ export function ReactionNotification({
 }: {
   notification: ReactionNotificationObj;
 }) {
-  const { userName, seen, event, imgUrl, post, timeStamp } = notification;
+  const { userName, event, imgUrl, post, timeStamp } = notification;
   return (
     <>
       <img
@@ -130,7 +130,7 @@ export function PrivateMessageNotification({
 }: {
   notification: PrivateMessageNotificationObj;
 }) {
-  const { userName, seen, imgUrl, timeStamp, dm } = notification;
+  const { userName, imgUrl, timeStamp, dm } = notification;
   return (
     <>
       <div className="grid gap-x-5 gap-y-2">
@@ -158,7 +158,7 @@ export function PicutureNotification({
 }: {
   notification: PictureNotificationObj;
 }) {
-  const { userName, seen, imgUrl, timeStamp, pictureUrl } = notification;
+  const { userName, imgUrl, timeStamp, pictureUrl } = notification;
   return (
     <>
       <img
