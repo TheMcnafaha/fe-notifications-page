@@ -80,7 +80,7 @@ export function AllNotifications() {
   };
   const privateRizky: PrivateMessageNotificationObj = {
     userName: "Rizky Hasanuddin",
-    seen: false,
+    seen: true,
     imgUrl: "/images/avatar-mark-webber.webp",
     timeStamp: "1 days",
     dm: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
@@ -89,7 +89,7 @@ export function AllNotifications() {
 
   const pictureKimberly: PictureNotificationObj = {
     userName: "Rizky Hasanuddin",
-    seen: false,
+    seen: true,
     imgUrl: "/images/avatar-mark-webber.webp",
     timeStamp: "1 week",
     pictureUrl: "/images/image-chess.webp",
@@ -99,7 +99,7 @@ export function AllNotifications() {
     userName: "Anna Kim",
     event: "left the group",
     group: "Chess Club",
-    seen: false,
+    seen: true,
     imgUrl: "/images/avatar-mark-webber.webp",
     timeStamp: "1 week",
     type: "group",
