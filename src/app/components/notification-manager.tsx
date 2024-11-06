@@ -88,7 +88,7 @@ export function AllNotifications() {
   };
 
   const pictureKimberly: PictureNotificationObj = {
-    userName: "Rizky Hasanuddin",
+    userName: "KImberly Smith",
     seen: true,
     imgUrl: "/images/avatar-mark-webber.webp",
     timeStamp: "1 week",
@@ -99,12 +99,12 @@ export function AllNotifications() {
     userName: "Anna Kim",
     event: "left the group",
     group: "Chess Club",
-    seen: true,
+    seen: false,
     imgUrl: "/images/avatar-mark-webber.webp",
     timeStamp: "1 week",
     type: "group",
   };
-  const reactions: Array<AllNotificationTypes> = [
+  const notifications: Array<AllNotificationTypes> = [
     reactionMark,
     simpleAngela,
     groupJacob,
@@ -112,10 +112,14 @@ export function AllNotifications() {
     pictureKimberly,
     groupAnna,
   ];
+
+  const seenArr=notifications.map(notification=>{return notification.seen})
+  console.log("HI: ",seenArr)
   return (
     <>
+      <NotificationCounter seenArr={seenArr}/>
       <ul className="flex max-w-lg flex-col gap-3">
-        {reactions.map((notification, i) => {
+        {notifications.map((notification, i) => {
           return (
             <li key={i}>
               <NotificationManager notification={notification} />
@@ -125,4 +129,18 @@ export function AllNotifications() {
       </ul>
     </>
   );
+}
+type NotificationCounterProps={
+  seenArr:Array<boolean>;
+}
+
+function NotificationCounter({seenArr}:NotificationCounterProps) {
+  const unread = seenArr.filter(mess => mess === false);
+  return <>
+  <div className="bg-red-500">
+    <h2>Notifications</h2>
+    <p>{unread.length}</p>
+    <p>Mark all as read</p>
+  </div>
+  </>
 }
