@@ -114,7 +114,7 @@ export function AllNotifications() {
   ];
   return (
     <>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex max-w-lg flex-col gap-3">
         {reactions.map((notification, i) => {
           return (
             <li key={i}>

@@ -8,7 +8,7 @@ type NotificationSeenContainerProps = {
 export function NotificationSeenContainer(
   props: NotificationSeenContainerProps,
 ) {
-  if (props.type === "private") {
+  if (props.type === "private" || props.type === "picture") {
     return (
       <div className={`p-2 ${props.seen ? "" : "bg-very-ligth-grayish-blue"}`}>
         {props.children}
