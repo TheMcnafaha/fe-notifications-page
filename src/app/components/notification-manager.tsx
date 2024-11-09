@@ -14,6 +14,7 @@ import {
   type GroupNotificationObj,
   type ReactionNotificationObj,
 } from "./notifications";
+import { NotificationCounter } from "./notification-counter";
 
 type AllNotificationTypes =
   | ReactionNotificationObj
@@ -144,22 +145,6 @@ export function AllNotifications() {
           </li>
         ))}
       </ul>
-    </>
-  );
-}
-type NotificationCounterProps = {
-  seenArr: Array<boolean>;
-};
-
-function NotificationCounter({ seenArr }: NotificationCounterProps) {
-  const unread = seenArr.filter((mess) => mess === false);
-  return (
-    <>
-      <div className="bg-red-500">
-        <h2>Notifications</h2>
-        <p>{unread.length}</p>
-        <p>Mark all as read</p>
-      </div>
     </>
   );
 }
