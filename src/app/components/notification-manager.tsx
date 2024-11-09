@@ -3,14 +3,16 @@ import { useState } from "react";
 
 import { NotificationSeenContainer } from "./notifiaction-seen-container";
 import {
-  ReactionNotification,
   SimpleNotification,
+  type SimpleNotificationObj,
+} from "./notifications/simple-notification";
+import {
+  ReactionNotification,
   GroupNotification,
   PrivateMessageNotification,
   PicutureNotification,
   type PrivateMessageNotificationObj,
   type PictureNotificationObj,
-  type SimpleNotificationObj,
   type GroupNotificationObj,
   type ReactionNotificationObj,
 } from "./notifications";
