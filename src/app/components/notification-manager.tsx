@@ -7,13 +7,15 @@ import {
   type SimpleNotificationObj,
 } from "./notifications/simple-notification";
 import {
-  ReactionNotification,
   GroupNotification,
+  type GroupNotificationObj,
+} from "./notifications/group-notification";
+import {
+  ReactionNotification,
   PrivateMessageNotification,
   PicutureNotification,
   type PrivateMessageNotificationObj,
   type PictureNotificationObj,
-  type GroupNotificationObj,
   type ReactionNotificationObj,
 } from "./notifications";
 import { NotificationCounter } from "./notification-counter";
