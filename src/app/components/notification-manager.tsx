@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 import { NotificationSeenContainer } from "./notifiaction-seen-container";
 import {
@@ -20,12 +21,17 @@ type AllNotificationTypes =
   | GroupNotificationObj
   | PrivateMessageNotificationObj
   | PictureNotificationObj;
-type NotificationProps = { notification: AllNotificationTypes };
+type NotificationProps = {
+  notification: AllNotificationTypes;
+  setNotifications: (id: string) => void;
+};
 function NotificationManager(props: NotificationProps) {
   return (
     <NotificationSeenContainer
       seen={props.notification.seen}
       type={props.notification.type}
+      notificationId={props.notification.userName}
+      setNotifications={props.setNotifications}
     >
       {getCorrectNotification(props)}
     </NotificationSeenContainer>
@@ -104,7 +110,7 @@ export function AllNotifications() {
     timeStamp: "1 week",
     type: "group",
   };
-  const notifications: Array<AllNotificationTypes> = [
+  const Defaultnotifications: Array<AllNotificationTypes> = [
     reactionMark,
     simpleAngela,
     groupJacob,
@@ -112,35 +118,48 @@ export function AllNotifications() {
     pictureKimberly,
     groupAnna,
   ];
-
-  const seenArr=notifications.map(notification=>{return notification.seen})
-  console.log("HI: ",seenArr)
+  const [notifications, setNotifications] = useState(Defaultnotifications);
+  const seenArr = Defaultnotifications.map((notification) => {
+    return notification.seen;
+  });
+  function hell(id: string) {
+    // react hates mutability, so when using useState and mutable js things
+    // YOU HAVE TO MAKE THEM A NEW THING
+    // ARRAYS ARE MUTABLE, so you do funny things
+    const nextNotifications = notifications.map((notifiaction) => {
+      if (notifiaction.userName === id) {
+        return { ...notifiaction, seen: true };
+      }
+      return notifiaction;
+    });
+    setNotifications(nextNotifications);
+  }
   return (
     <>
-      <NotificationCounter seenArr={seenArr}/>
+      <NotificationCounter seenArr={seenArr} />
       <ul className="flex max-w-lg flex-col gap-3">
-        {notifications.map((notification, i) => {
-          return (
-            <li key={i}>
-              <NotificationManager notification={notification} />
-            </li>
-          );
-        })}
+        {notifications.map((i) => (
+          <li key={i.userName}>
+            <NotificationManager notification={i} setNotifications={hell} />
+          </li>
+        ))}
       </ul>
     </>
   );
 }
-type NotificationCounterProps={
-  seenArr:Array<boolean>;
-}
+type NotificationCounterProps = {
+  seenArr: Array<boolean>;
+};
 
-function NotificationCounter({seenArr}:NotificationCounterProps) {
-  const unread = seenArr.filter(mess => mess === false);
-  return <>
-  <div className="bg-red-500">
-    <h2>Notifications</h2>
-    <p>{unread.length}</p>
-    <p>Mark all as read</p>
-  </div>
-  </>
+function NotificationCounter({ seenArr }: NotificationCounterProps) {
+  const unread = seenArr.filter((mess) => mess === false);
+  return (
+    <>
+      <div className="bg-red-500">
+        <h2>Notifications</h2>
+        <p>{unread.length}</p>
+        <p>Mark all as read</p>
+      </div>
+    </>
+  );
 }
