@@ -12,11 +12,13 @@ import {
 } from "./notifications/group-notification";
 import {
   ReactionNotification,
+  type ReactionNotificationObj,
+} from "./notifications/reaction-notification";
+import {
   PrivateMessageNotification,
   PicutureNotification,
   type PrivateMessageNotificationObj,
   type PictureNotificationObj,
-  type ReactionNotificationObj,
 } from "./notifications";
 import { NotificationCounter } from "./notification-counter";
 
