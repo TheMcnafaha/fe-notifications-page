@@ -14,15 +14,15 @@ import {
   ReactionNotification,
   type ReactionNotificationObj,
 } from "./notifications/reaction-notification";
-import {
-  PicutureNotification,
-  type PictureNotificationObj,
-} from "./notifications";
 import { NotificationCounter } from "./notification-counter";
 import {
   PrivateMessageNotification,
   type PrivateMessageNotificationObj,
 } from "./notifications/private-message-notification";
+import {
+  PicutureNotification,
+  type PictureNotificationObj,
+} from "./notifications/picture-notification";
 
 type AllNotificationTypes =
   | ReactionNotificationObj
