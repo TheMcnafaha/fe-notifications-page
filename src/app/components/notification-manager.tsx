@@ -144,7 +144,7 @@ export function AllNotifications() {
     setNotifications(nextNotifications);
   }
   return (
-    <>
+    <div>
       <NotificationCounter seenArr={seenArr} />
       <ul className="flex max-w-lg flex-col gap-3">
         {notifications.map((i) => (
@@ -153,6 +153,6 @@ export function AllNotifications() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
