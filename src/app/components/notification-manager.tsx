@@ -143,9 +143,18 @@ export function AllNotifications() {
     });
     setNotifications(nextNotifications);
   }
+  function markAllAsRead(){
+    // make a new arr
+    // all seen values are true
+    // setState(newArr)
+   const twinArr=notifications.map((notification)=>{
+    return {...notification,seen:true}
+   }) 
+    setNotifications(twinArr)
+  }
   return (
     <div>
-      <NotificationCounter seenArr={seenArr} />
+      <NotificationCounter seenArr={seenArr} onClickHandler={markAllAsRead} />
       <ul className="flex max-w-lg flex-col gap-3">
         {notifications.map((i) => (
           <li key={i.userName}>

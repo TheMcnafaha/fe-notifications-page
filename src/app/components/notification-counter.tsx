@@ -1,9 +1,12 @@
 type NotificationCounterProps = {
   seenArr: Array<boolean>;
+  onClickHandler:()=>void;
 };
 
-export function NotificationCounter({ seenArr }: NotificationCounterProps) {
+export function NotificationCounter({ seenArr, onClickHandler }: NotificationCounterProps) {
   const unread = seenArr.filter((mess) => mess === false);
+  
+
   return (
     <>
       <div className="mb-2 flex w-full justify-between gap-3 py-3">
@@ -14,7 +17,7 @@ export function NotificationCounter({ seenArr }: NotificationCounterProps) {
           </p>
         </div>
 
-        <p>Mark all as read</p>
+        <button onClick={onClickHandler} >Mark all as read</button>
       </div>
     </>
   );
