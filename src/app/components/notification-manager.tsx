@@ -128,7 +128,7 @@ export function AllNotifications() {
     groupAnna,
   ];
   const [notifications, setNotifications] = useState(Defaultnotifications);
-  const seenArr = Defaultnotifications.map((notification) => {
+  const seenArr = notifications.map((notification) => {
     return notification.seen;
   });
   function hell(id: string) {
@@ -143,14 +143,14 @@ export function AllNotifications() {
     });
     setNotifications(nextNotifications);
   }
-  function markAllAsRead(){
+  function markAllAsRead() {
     // make a new arr
     // all seen values are true
     // setState(newArr)
-   const twinArr=notifications.map((notification)=>{
-    return {...notification,seen:true}
-   }) 
-    setNotifications(twinArr)
+    const twinArr = notifications.map((notification) => {
+      return { ...notification, seen: true };
+    });
+    setNotifications(twinArr);
   }
   return (
     <div>
