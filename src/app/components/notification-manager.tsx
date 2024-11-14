@@ -24,7 +24,7 @@ import {
   type PictureNotificationObj,
 } from "./notifications/picture-notification";
 
-type AllNotificationTypes =
+export type AllNotificationTypes =
   | ReactionNotificationObj
   | SimpleNotificationObj
   | GroupNotificationObj
@@ -128,9 +128,7 @@ export function AllNotifications() {
     groupAnna,
   ];
   const [notifications, setNotifications] = useState(Defaultnotifications);
-  const seenArr = notifications.map((notification) => {
-    return notification.seen;
-  });
+
   function hell(id: string) {
     // react hates mutability, so when using useState and mutable js things
     // YOU HAVE TO MAKE THEM A NEW THING
@@ -154,7 +152,10 @@ export function AllNotifications() {
   }
   return (
     <div>
-      <NotificationCounter seenArr={seenArr} onClickHandler={markAllAsRead} />
+      <NotificationCounter
+        notifications={notifications}
+        onClickHandler={markAllAsRead}
+      />
       <ul className="flex max-w-lg flex-col gap-3">
         {notifications.map((i) => (
           <li key={i.userName}>

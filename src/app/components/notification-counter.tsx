@@ -1,18 +1,19 @@
+import { AllNotificationTypes } from "./notification-manager";
+
 type NotificationCounterProps = {
-  seenArr: Array<boolean>;
+  notifications: Array<AllNotificationTypes>;
   onClickHandler: () => void;
 };
 
 export function NotificationCounter({
-  seenArr,
+  notifications,
   onClickHandler,
 }: NotificationCounterProps) {
   // notifications are not a boolean, its notificatins arr: [{seen,username,url,img,group,post img}]
   // seenArr has the minimal amount of info by mapping over the notifications:
   // [{...},{...},...] => [false,true,false,true]
   // [false,true,false] => [false,false] => 2
-  const unread = seenArr.filter((mess) => mess === false);
-  // loop, increase on the object
+  const unread = notifications.filter((n) => n.seen === false);
 
   return (
     <>
