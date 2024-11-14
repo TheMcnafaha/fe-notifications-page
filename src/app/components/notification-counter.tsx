@@ -1,11 +1,19 @@
+import { AllNotificationTypes } from "./notification-manager";
+
 type NotificationCounterProps = {
-  seenArr: Array<boolean>;
-  onClickHandler:()=>void;
+  notifications: Array<AllNotificationTypes>;
+  onClickHandler: () => void;
 };
 
-export function NotificationCounter({ seenArr, onClickHandler }: NotificationCounterProps) {
-  const unread = seenArr.filter((mess) => mess === false);
-  
+export function NotificationCounter({
+  notifications,
+  onClickHandler,
+}: NotificationCounterProps) {
+  // notifications are not a boolean, its notificatins arr: [{seen,username,url,img,group,post img}]
+  // seenArr has the minimal amount of info by mapping over the notifications:
+  // [{...},{...},...] => [false,true,false,true]
+  // [false,true,false] => [false,false] => 2
+  const unread = notifications.filter((n) => n.seen === false);
 
   return (
     <>
@@ -17,7 +25,7 @@ export function NotificationCounter({ seenArr, onClickHandler }: NotificationCou
           </p>
         </div>
 
-        <button onClick={onClickHandler} >Mark all as read</button>
+        <button onClick={onClickHandler}>Mark all as read</button>
       </div>
     </>
   );
